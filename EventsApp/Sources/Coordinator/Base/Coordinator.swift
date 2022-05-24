@@ -8,7 +8,7 @@
 import Foundation
 
 protocol Coordinator {
-    var childCoordinators: [Coordinator] { get set }
+    var childCoordinators: [Coordinator] { get }
     func start()
     func coordinate(to coordinator: Coordinator)
 }
