@@ -16,6 +16,11 @@ class AddEventViewController: UIViewController {
         setupView()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        viewModel.viewDidDisappear()
+    }
+    
     func setupView() {
         view.backgroundColor = .gloabl
     }

@@ -10,7 +10,7 @@ import Foundation
 final class AddEventViewModel {
     var coordinator: AddEventCoordinator?
     
-    func viewDidDisapear() {
+    func viewDidDisappear() {
         coordinator?.didFinishAddEvent()
     }
 }

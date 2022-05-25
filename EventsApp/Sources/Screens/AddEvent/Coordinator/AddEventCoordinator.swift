@@ -10,7 +10,6 @@ import UIKit
 
 final class AddEventCoordinator: Coordinator {
     private (set) var childCoordinators: [Coordinator] = []
-    
     private let navigationController: UINavigationController
     
     var parentCoordinator: EventListCoordinator?

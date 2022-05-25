@@ -10,7 +10,6 @@ import UIKit
 
 final class EventListCoordinator: Coordinator {
     private (set) var childCoordinators: [Coordinator] = []
-    
     private let navigationContoller: UINavigationController
     
     init(navigationContoller: UINavigationController) {
@@ -28,12 +27,13 @@ final class EventListCoordinator: Coordinator {
  
     func startAddEvent() {
         let addEventListCoordinator = AddEventCoordinator(navigationController: navigationContoller)
+        addEventListCoordinator.parentCoordinator = self
         childCoordinators.append(addEventListCoordinator)
         coordinate(to: addEventListCoordinator)
     }
     
     func childDidFinish(_ childCoordinator: Coordinator) {
-        if let index = childCoordinators.firstIndex(where: { (coordinator) -> Bool in
+        if let index = childCoordinators.firstIndex(where: { coordinator -> Bool in
             return childCoordinator === coordinator
         }) {
             childCoordinators.remove(at: index)
