@@ -15,6 +15,8 @@ class AddEventViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(TitleSubtitleTableViewCell.self, forCellReuseIdentifier: TitleSubtitleTableViewCell.identifier)
+        tableView.setContentOffset(.init(x: 0, y: -1), animated: false)
+        tableView.tableFooterView = UIView()
         tableView.dataSource = self
         return tableView
     }()
@@ -42,7 +44,12 @@ class AddEventViewController: UIViewController {
     }
     
     private func setupView() {
+        title = "Add Events"
         view.backgroundColor = .gloabl
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.tintColor = .black
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done , target: self, action: #selector(tappedDone))
     }
     
     private func setupHierarchy() {
@@ -54,6 +61,10 @@ class AddEventViewController: UIViewController {
             make.top.bottom.equalToSuperview()
             make.left.right.equalToSuperview()
         }
+    }
+    
+    @objc private func tappedDone() {
+        viewModel.tappedDone()
     }
 }
 
@@ -69,9 +80,22 @@ extension AddEventViewController: UITableViewDataSource {
         case .titleSubtitle(let titleSubtitleCellViewModel):
             let cell = tableView.dequeueReusableCell(withIdentifier: TitleSubtitleTableViewCell.identifier, for: indexPath) as! TitleSubtitleTableViewCell
             cell.configure(with: titleSubtitleCellViewModel)
+            cell.subTitleTextField.delegate = self
             return cell
-        case .titleImage:
-            return UITableViewCell()
         }
     }
 }
+
+extension AddEventViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let currentText = textField.text else { return false }
+        let text = currentText + string
+        let point = textField.convert(textField.bounds.origin, to: tableView)
+        if let indexPath = tableView.indexPathForRow(at: point) {
+            viewModel.updateCell(indexPath: indexPath, subtitle: text)
+        }
+        return true
+    }
+}
+

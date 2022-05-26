@@ -22,7 +22,6 @@ final class EventListCoordinator: Coordinator {
         evenListViewModel.coordinator = self
         eventListViewController.viewModel = evenListViewModel
         navigationContoller.pushViewController(eventListViewController, animated: true)
-        navigationContoller.navigationBar.prefersLargeTitles = true
     }
  
     func startAddEvent() {

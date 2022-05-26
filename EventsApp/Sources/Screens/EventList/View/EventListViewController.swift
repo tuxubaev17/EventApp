@@ -20,9 +20,10 @@ class EventListViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .gloabl
-        title = viewModel.title
+        title = "Events"
         
         barButtonItem.tintColor = .primary
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.setRightBarButton(barButtonItem, animated: true)
     }
     
