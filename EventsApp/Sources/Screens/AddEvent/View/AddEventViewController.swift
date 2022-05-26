@@ -17,7 +17,9 @@ class AddEventViewController: UIViewController {
         tableView.register(TitleSubtitleTableViewCell.self, forCellReuseIdentifier: TitleSubtitleTableViewCell.identifier)
         tableView.setContentOffset(.init(x: 0, y: -1), animated: false)
         tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
         tableView.dataSource = self
+        tableView.delegate = self
         return tableView
     }()
 
@@ -68,7 +70,7 @@ class AddEventViewController: UIViewController {
     }
 }
 
-extension AddEventViewController: UITableViewDataSource {
+extension AddEventViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRows()
@@ -83,6 +85,11 @@ extension AddEventViewController: UITableViewDataSource {
             cell.subTitleTextField.delegate = self
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didSelectRow(at: indexPath)
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 }
 

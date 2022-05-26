@@ -99,12 +99,15 @@ final class TitleSubtitleTableViewCell: UITableViewCell {
         self.viewModel = viewModel
         titleLabel.text = viewModel.title
         subTitleTextField.text = viewModel.subTitle
+        imagView.image = viewModel.image
+
         subTitleTextField.placeholder = viewModel.placeholder
         subTitleTextField.inputView = viewModel.type == .text ? nil : datePickerView
         subTitleTextField.inputAccessoryView = viewModel.type == .text ? nil : toolBar
-        
+
         imagView.isHidden = viewModel.type != .image
         subTitleTextField.isHidden = viewModel.type == .image
+      
         verticalStackView.spacing = viewModel.type == .image ? 15 : verticalStackView.spacing
     }
 }

@@ -15,6 +15,8 @@
 		8447A60C283C997B00B5FD9A /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447A60B283C997B00B5FD9A /* EventListViewController.swift */; };
 		8447A610283CA08F00B5FD9A /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447A60F283CA08F00B5FD9A /* Coordinator.swift */; };
 		8447A614283CD69E00B5FD9A /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447A613283CD69E00B5FD9A /* UIColor+Extensions.swift */; };
+		84951863283F86040020AB80 /* ImagePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84951862283F86040020AB80 /* ImagePickerCoordinator.swift */; };
+		8495186B283F98620020AB80 /* EventsCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495186A283F98620020AB80 /* EventsCellBuilder.swift */; };
 		8497BC5A283CDD6100F42350 /* EventsApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8497BC58283CDD6100F42350 /* EventsApp.xcdatamodeld */; };
 		8497BC5C283CDE9600F42350 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497BC5B283CDE9600F42350 /* CoreDataManager.swift */; };
 		8497BC5E283CEF4800F42350 /* EventListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497BC5D283CEF4800F42350 /* EventListViewModel.swift */; };
@@ -38,6 +40,8 @@
 		8447A60B283C997B00B5FD9A /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
 		8447A60F283CA08F00B5FD9A /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		8447A613283CD69E00B5FD9A /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		84951862283F86040020AB80 /* ImagePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCoordinator.swift; sourceTree = "<group>"; };
+		8495186A283F98620020AB80 /* EventsCellBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCellBuilder.swift; sourceTree = "<group>"; };
 		8497BC59283CDD6100F42350 /* EventsApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventsApp.xcdatamodel; sourceTree = "<group>"; };
 		8497BC5B283CDE9600F42350 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		8497BC5D283CEF4800F42350 /* EventListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewModel.swift; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 		8447A605283C8A0F00B5FD9A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				84951869283F984A0020AB80 /* CellBuilder */,
 				8497BC6D283CF75100F42350 /* CoreDataManager */,
 				8447A612283CD68200B5FD9A /* Extensions */,
 				8447A607283C8A3C00B5FD9A /* App */,
@@ -171,6 +176,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		84951869283F984A0020AB80 /* CellBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				8495186A283F98620020AB80 /* EventsCellBuilder.swift */,
+			);
+			path = CellBuilder;
+			sourceTree = "<group>";
+		};
 		8497BC61283CF59800F42350 /* EventList */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +240,7 @@
 		8497BC67283CF61300F42350 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				84951862283F86040020AB80 /* ImagePickerCoordinator.swift */,
 				8497BC5F283CF11A00F42350 /* AddEventCoordinator.swift */,
 			);
 			path = Coordinator;
@@ -409,6 +423,8 @@
 				8497BC5C283CDE9600F42350 /* CoreDataManager.swift in Sources */,
 				8497BC73283E315100F42350 /* TitleSubtitleCellViewModel.swift in Sources */,
 				8497BC5A283CDD6100F42350 /* EventsApp.xcdatamodeld in Sources */,
+				8495186B283F98620020AB80 /* EventsCellBuilder.swift in Sources */,
+				84951863283F86040020AB80 /* ImagePickerCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
