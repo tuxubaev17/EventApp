@@ -41,8 +41,7 @@ class AddEventViewController: UIViewController {
         viewModel.onUpdate = { [weak self] in
             self?.tableView.reloadData()
         }
-        
-        viewModel.viewDidLoad()
+        viewModel.setupCells()
     }
     
     private func setupView() {

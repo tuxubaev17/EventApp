@@ -18,7 +18,6 @@ final class ImagePickerCoordinator: NSObject ,Coordinator {
         self.navigationController = navigationController
     }
     
-    
     func start() {
         let imagePickerViewController = UIImagePickerController()
         imagePickerViewController.delegate = self

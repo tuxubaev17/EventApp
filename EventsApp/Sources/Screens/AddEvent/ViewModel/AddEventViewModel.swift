@@ -15,7 +15,7 @@ final class AddEventViewModel {
     
     var onUpdate: VoidCallback?
     private(set) var cells: [Cell] = []
-    var coordinator: AddEventCoordinator?
+    weak var coordinator: AddEventCoordinator?
     
     private var nameCellViewModel: TitleSubtitleCellViewModel?
     private var dateCellViewModel: TitleSubtitleCellViewModel?
@@ -29,13 +29,9 @@ final class AddEventViewModel {
         return dateFormatter
     }()
     
-    init(cellBuider: EventsCellBuilder, coreDataManager: CoreDataManager) {
+    init(cellBuider: EventsCellBuilder, coreDataManager: CoreDataManager = CoreDataManager.shared) {
         self.cellBuider = cellBuider
         self.coreDataManager = coreDataManager
-    }
-    
-    func viewDidLoad() {
-        setupCells()
     }
     
     func viewDidDisappear() {
@@ -51,7 +47,7 @@ final class AddEventViewModel {
     }
     
     func tappedDone() {
-        guard let name = nameCellViewModel?.subTitle, let dateString = nameCellViewModel?.subTitle, let image = nameCellViewModel?.image, let date = dateFormatter.date(from: dateString) else { return }
+        guard let name = nameCellViewModel?.subTitle, let dateString = dateCellViewModel?.subTitle, let image = backgroundImageCellViewModel?.image, let date = dateFormatter.date(from: dateString) else { return }
         coreDataManager.saveEvent(name: name, date: date, image: image)
         coordinator?.didFinishSaveEvent()
     }
@@ -74,7 +70,7 @@ final class AddEventViewModel {
     }
 }
 
-private extension AddEventViewModel {
+extension AddEventViewModel {
     func setupCells() {
         nameCellViewModel = cellBuider.makeTitleSubtitleCellViewModel(.text)
         dateCellViewModel = cellBuider.makeTitleSubtitleCellViewModel(.date, onCellUpdate: { [weak self] in
