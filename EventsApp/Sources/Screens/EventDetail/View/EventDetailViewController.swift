@@ -23,12 +23,16 @@ final class EventDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         viewModelListener()
-        
+
         setupView()
         setupHierarchy()
         setupLayout()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        viewModel.viewDidDisappear()
     }
     
     private func viewModelListener() {
@@ -37,12 +41,12 @@ final class EventDetailViewController: UIViewController {
             self.backgroundImageView.image = self.viewModel.image
             self.timeRemainingStackView.update(with: timeRemainingViewModel)
         }
-        
         viewModel.viewDidLoad()
     }
     
     private func setupView() {
         view.backgroundColor = .white
+        navigationItem.rightBarButtonItem = .init(image: UIImage(systemName: "pencil"), style: .plain, target: self, action: #selector(editButtonTapped))
         
         timeRemainingStackView.setup()
     }
@@ -62,9 +66,7 @@ final class EventDetailViewController: UIViewController {
             make.centerY.equalToSuperview()
         }
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        viewModel.viewDidDisappear()
+    @objc func editButtonTapped() {
+        viewModel.editButtonTapped()
     }
 }

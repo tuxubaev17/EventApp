@@ -17,9 +17,6 @@ class EventListViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(EventCell.self, forCellReuseIdentifier: EventCell.identifier)
-//        tableView.setContentOffset(.init(x: 0, y: -1), animated: false)
-//        tableView.tableFooterView = UIView()
-//        tableView.separatorStyle = .none
         tableView.dataSource = self
         tableView.delegate = self
         return tableView
@@ -27,12 +24,12 @@ class EventListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewModelEventListener()
-        
+                
         setupView()
         setupHierarchy()
         setupLayout()
+        
+        viewModelEventListener()
     }
     
     private func setupView() {
@@ -60,11 +57,10 @@ class EventListViewController: UIViewController {
     }
     
     private func viewModelEventListener() {
-        viewModel.updateCell()
-
         viewModel.onUpdate = { [weak self] in
             self?.tableView.reloadData()
         }
+        viewModel.viewDidLoad()
     }
 }
 

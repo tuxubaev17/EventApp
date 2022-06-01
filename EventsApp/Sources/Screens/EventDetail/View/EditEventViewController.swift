@@ -1,16 +1,14 @@
 //
-//  AddEventViewController.swift
+//  EditEventViewController.swift
 //  EventsApp
 //
-//  Created by Alikhan on 24.05.2022.
+//  Created by Alikhan on 31.05.2022.
 //
 
 import UIKit
-import SnapKit
 
-class AddEventViewController: UIViewController {
-    
-    var viewModel: AddEventViewModel!
+final class EditEventViewController: UIViewController {
+    var viewModel: EditEventViewModel!
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -46,7 +44,7 @@ class AddEventViewController: UIViewController {
     }
     
     private func setupView() {
-        title = "Add Events"
+        title = "Edit"
         view.backgroundColor = .gloabl
         
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -70,7 +68,7 @@ class AddEventViewController: UIViewController {
     }
 }
 
-extension AddEventViewController: UITableViewDataSource, UITableViewDelegate {
+extension EditEventViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRows()
@@ -93,7 +91,7 @@ extension AddEventViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension AddEventViewController: UITextFieldDelegate {
+extension EditEventViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let currentText = textField.text else { return false }

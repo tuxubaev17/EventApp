@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 final class EventListCoordinator: Coordinator {
-    private (set) var childCoordinators: [Coordinator] = []
+    private(set) var childCoordinators: [Coordinator] = []
     var onSaveEvent = {}
     private let navigationContoller: UINavigationController
     

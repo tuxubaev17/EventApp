@@ -10,8 +10,8 @@ import UIKit
 import CoreData
 
 struct EventCellViewModel {
+    static let imageCache = NSCache<NSString, UIImage>()
     let date = Date()
-    private static let imageCache = NSCache<NSString, UIImage>()
     private let imageQueue = DispatchQueue(label: "imageQueue", qos: .background)
     var onSelect: Callback<NSManagedObjectID>?
     

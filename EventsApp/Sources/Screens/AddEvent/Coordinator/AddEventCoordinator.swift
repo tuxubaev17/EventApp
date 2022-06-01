@@ -45,15 +45,14 @@ final class AddEventCoordinator: Coordinator {
         self.completion = completion
         let imagePickerCoordinator =  ImagePickerCoordinator(navigationController: modalNavigationController)
         imagePickerCoordinator.parentCoordinator = self
+        imagePickerCoordinator.onFinishPicking = { [weak self] image in
+            completion(image)
+            self?.modalNavigationController?.dismiss(animated: true, completion: nil)
+        }
         childCoordinators.append(imagePickerCoordinator)
         coordinate(to: imagePickerCoordinator)
     }
-    
-    func didFinishPicking(_ image: UIImage) {
-        completion?(image)
-        modalNavigationController?.dismiss(animated: true, completion: nil)
-    }
-    
+
     func childDidFinish(_ childCoordinator: Coordinator) {
         if let index = childCoordinators.firstIndex(where: { coordinator -> Bool in
             return childCoordinator === coordinator
